@@ -1,0 +1,22 @@
+version: '2'
+services:
+  wordpress:
+    image: harobed/wordpress:4.7.1-apache
+    #build: .
+    ports:
+      - "8088:80"
+    environment:
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_FS_METHOD: direct
+    links:
+      - "mysql:mysql"
+    working_dir: /var/www/html
+    volumes:
+      - ./wordpress/:/var/www/html/
+
+  mysql:
+    image: mariadb:10
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./mariadb:/var/lib/mysql
