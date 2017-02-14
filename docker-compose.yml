@@ -6,6 +6,7 @@ services:
     ports:
       - "8088:80"
     environment:
+      WORDPRESS_TABLE_PREFIX: 'wp_'
       WORDPRESS_DB_PASSWORD: password
       WORDPRESS_FS_METHOD: direct
     links:
